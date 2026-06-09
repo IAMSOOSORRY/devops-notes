@@ -1,0 +1,477 @@
+Day 02 - Linux File Management
+Introduction
+
+Linux stores everything as files and directories. Understanding file management is one of the most important skills for a DevOps Engineer because every server, application, Docker container, Kubernetes deployment, and configuration file relies on the Linux filesystem.
+Linux Filesystem Structure
+
+Linux starts from a root directory:
+
+/
+
+Everything in Linux exists under this root directory.
+Important Directories
+/home
+
+Stores user files and personal data.
+
+Example:
+
+/home/ubuntu
+
+Contains:
+
+    Documents
+
+    Downloads
+
+    Projects
+
+    Scripts
+
+/etc
+
+Stores system configuration files.
+
+Examples:
+
+/etc/passwd
+/etc/ssh/sshd_config
+
+Used by administrators and system services.
+/var
+
+Stores variable and changing data.
+
+Examples:
+
+    Logs
+
+    Cache
+
+    Databases
+
+/var/log
+
+/tmp
+
+Stores temporary files.
+
+Files may be removed automatically after reboot.
+/bin
+
+Contains essential Linux commands.
+
+Examples:
+
+ls
+cp
+mv
+cat
+
+/usr
+
+Stores installed applications and software.
+/dev
+
+Represents hardware devices as files.
+
+Examples:
+
+/dev/sda
+/dev/tty
+
+/proc
+
+Contains information about running processes and the Linux kernel.
+Command: pwd
+Purpose
+
+Displays the current working directory.
+Syntax
+
+pwd
+
+Example
+
+pwd
+
+Output:
+
+/home/ubuntu
+
+What Happens Internally?
+
+Linux checks the shell's current directory location and prints it.
+Use Cases
+
+    Verify current location
+
+    Avoid executing commands in the wrong directory
+
+Command: ls
+Purpose
+
+Lists files and directories.
+Syntax
+
+ls
+
+Example
+
+ls
+
+Output:
+
+Documents Downloads Desktop
+
+What Happens Internally?
+
+Linux reads directory entries and displays their names.
+ls -l
+
+Displays detailed information.
+
+ls -l
+
+Example:
+
+-rw-rw-r-- 1 ubuntu ubuntu 20 Jun 09 notes.txt
+
+Shows:
+
+    Permissions
+
+    Owner
+
+    Group
+
+    File Size
+
+    Modified Date
+
+ls -la
+
+Displays:
+
+    Hidden files
+
+    Detailed information
+
+ls -la
+
+Command: touch
+Purpose
+
+Creates an empty file.
+Syntax
+
+touch filename.txt
+
+Example
+
+touch notes.txt
+
+Creates:
+
+notes.txt
+
+What Happens Internally?
+
+    Linux checks if file exists.
+
+    If not, creates an empty file.
+
+    If it exists, updates the timestamp.
+
+Use Cases
+
+    Create configuration files
+
+    Create scripts
+
+    Create placeholders
+
+Command: mkdir
+Purpose
+
+Creates directories.
+Syntax
+
+mkdir directory_name
+
+Example
+
+mkdir DevOps
+
+Creates:
+
+DevOps/
+
+What Happens Internally?
+
+Linux creates:
+
+    Directory entry
+
+    Metadata
+
+    Inode
+
+mkdir -p
+
+Creates nested directories.
+
+mkdir -p AWS/EKS/Cluster
+
+Result:
+
+AWS
+└── EKS
+    └── Cluster
+
+Use Cases
+
+    Project structures
+
+    Kubernetes folders
+
+    Terraform modules
+
+Command: cat
+Purpose
+
+Displays file content.
+Syntax
+
+cat filename
+
+Example
+
+cat notes.txt
+
+Output:
+
+Hello DevOps
+
+What Happens Internally?
+
+    Opens the file.
+
+    Reads data.
+
+    Prints data to terminal.
+
+Create File Using cat
+
+cat > notes.txt
+
+Type content and press:
+
+CTRL + D
+
+To save.
+Command: echo
+Purpose
+
+Prints text.
+Syntax
+
+echo "Hello"
+
+Output:
+
+Hello
+
+Write Content to File
+
+echo "Hello DevOps" > notes.txt
+
+Content:
+
+Hello DevOps
+
+Important
+
+Single greater-than symbol (>)
+
+echo "New Data" > notes.txt
+
+Overwrites existing content.
+
+Previous data is lost.
+Append Content
+
+echo "Second Line" >> notes.txt
+
+Result:
+
+Hello DevOps
+Second Line
+
+Double greater-than symbol (>>) appends content.
+Command: cp
+Purpose
+
+Copies files and directories.
+Syntax
+
+cp source destination
+
+Example
+
+cp notes.txt backup.txt
+
+Result:
+
+notes.txt
+backup.txt
+
+Both files exist.
+What Happens Internally?
+
+    Opens source file.
+
+    Reads data.
+
+    Creates destination file.
+
+    Writes copied data.
+
+Copy Directory
+
+cp -r Projects Backup
+
+The -r option means recursive.
+
+Copies all files and folders.
+Command: mv
+Purpose
+
+Moves or renames files and directories.
+Rename File
+
+mv notes.txt linux.txt
+
+Result:
+
+linux.txt
+
+Old filename disappears.
+Move File
+
+mv linux.txt DevOps/
+
+Result:
+
+DevOps/linux.txt
+
+What Happens Internally?
+
+Linux updates directory entries without copying file content.
+
+This makes mv very fast.
+Command: rm
+Purpose
+
+Deletes files and directories.
+Delete File
+
+rm notes.txt
+
+Removes the file.
+Delete Directory
+
+rm -r Projects
+
+Deletes:
+
+Projects
+├── file1
+├── file2
+└── folder
+
+Everything inside is removed.
+rm -rf
+
+rm -rf Projects
+
+Options:
+
+-r = Recursive
+-f = Force
+
+Deletes everything without confirmation.
+Warning
+
+Never execute:
+
+sudo rm -rf /
+
+This can destroy the entire operating system.
+Command: tree
+Purpose
+
+Displays folder structure visually.
+Syntax
+
+tree
+
+Example
+
+DevOps
+├── Docker
+│   └── notes.txt
+└── Linux
+    └── commands.txt
+
+Why DevOps Engineers Use It
+
+    Project documentation
+
+    GitHub repositories
+
+    Kubernetes manifests
+
+    Terraform projects
+
+    Docker project structures
+
+Real DevOps Example
+
+Project Structure:
+
+kubernetes-projects
+├── deployment.yaml
+├── service.yaml
+├── ingress.yaml
+
+Verification:
+
+tree kubernetes-projects
+
+Ensures all files are organized before committing to GitHub.
+Day 02 Summary
+Command	Purpose
+pwd	Show current directory
+ls	List files and directories
+touch	Create files
+mkdir	Create directories
+cat	Read file contents
+echo	Display or write text
+cp	Copy files/directories
+mv	Move or rename files
+rm	Delete files/directories
+tree	Display directory structure
+Key Takeaways
+
+    Linux treats everything as a file.
+
+    Directories organize files and folders.
+
+    File management is a fundamental DevOps skill.
+
+    Always verify before deleting with rm.
+
+    Use tree to visualize project structures.
+
+    Mastering these commands will make future DevOps topics easier.
