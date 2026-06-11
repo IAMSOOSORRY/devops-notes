@@ -1,0 +1,338 @@
+========================================
+DAY 3 - LINUX FILE MANAGEMENT COMMANDS
+========================================
+
+1. pwd
+----------------------------------------
+Purpose:
+Displays current working directory.
+
+Example:
+pwd
+
+Output:
+/home/ubuntu/DevOps/Linux/Day3
+
+
+2. ls
+----------------------------------------
+Purpose:
+Lists files and directories.
+
+Example:
+ls
+
+Example Output:
+file1.txt
+file2.txt
+app.log
+
+
+3. ls -l
+----------------------------------------
+Purpose:
+Shows detailed information about files.
+
+Example:
+ls -l
+
+Output:
+-rw-r--r-- 1 ubuntu ubuntu 120 notes.txt
+
+Explanation:
+r = Read
+w = Write
+x = Execute
+
+
+4. mkdir
+----------------------------------------
+Purpose:
+Creates a new directory.
+
+Example:
+mkdir project
+
+
+5. mkdir -p
+----------------------------------------
+Purpose:
+Creates nested directories.
+
+Example:
+mkdir -p DevOps/Linux/Day3
+
+Result:
+DevOps
+└── Linux
+    └── Day3
+
+
+6. touch
+----------------------------------------
+Purpose:
+Creates empty files.
+
+Example:
+touch file1.txt
+
+Multiple Files:
+touch app.log db.log server.log
+
+
+7. cp
+----------------------------------------
+Purpose:
+Copies files.
+
+Example:
+cp file1.txt backup.txt
+
+Result:
+backup.txt is a copy of file1.txt
+
+
+8. cp -r
+----------------------------------------
+Purpose:
+Copies directories recursively.
+
+Example:
+cp -r DevOps BackupDevOps
+
+Result:
+Entire DevOps directory copied.
+
+
+9. mv
+----------------------------------------
+Purpose:
+Move or rename files.
+
+Rename:
+mv file1.txt file1_old.txt
+
+Move:
+mv file2.txt Archive/
+
+
+10. rm
+----------------------------------------
+Purpose:
+Deletes files.
+
+Example:
+rm backup.txt
+
+
+11. rm -r
+----------------------------------------
+Purpose:
+Deletes directories and contents.
+
+Example:
+rm -r BackupDevOps
+
+
+12. cat
+----------------------------------------
+Purpose:
+Displays file content.
+
+Example:
+cat notes.txt
+
+
+13. echo
+----------------------------------------
+Purpose:
+Writes content into files.
+
+Example:
+echo "Linux Learning" > notes.txt
+
+Append:
+echo "Docker Basics" >> notes.txt
+
+
+14. head
+----------------------------------------
+Purpose:
+Displays first 10 lines.
+
+Example:
+head notes.txt
+
+
+15. tail
+----------------------------------------
+Purpose:
+Displays last 10 lines.
+
+Example:
+tail notes.txt
+
+
+16. less
+----------------------------------------
+Purpose:
+Views large files page by page.
+
+Example:
+less notes.txt
+
+Exit:
+q
+
+
+17. wc
+----------------------------------------
+Purpose:
+Counts lines, words and characters.
+
+Example:
+wc notes.txt
+
+Output:
+2 5 35 notes.txt
+
+Meaning:
+2 = Lines
+5 = Words
+35 = Characters
+
+
+18. grep
+----------------------------------------
+Purpose:
+Searches text inside files.
+
+Example:
+grep Docker notes.txt
+
+Output:
+Docker is amazing
+
+
+19. grep -i
+----------------------------------------
+Purpose:
+Case-insensitive search.
+
+Example:
+grep -i docker notes.txt
+
+Matches:
+Docker
+docker
+DOCKER
+
+
+20. find
+----------------------------------------
+Purpose:
+Finds files and directories.
+
+Example:
+find . -name notes.txt
+
+Find all txt files:
+find . -name "*.txt"
+
+
+21. chmod
+----------------------------------------
+Purpose:
+Changes permissions.
+
+Add Execute:
+chmod +x notes.txt
+
+Numeric Mode:
+chmod 755 notes.txt
+
+Meaning:
+7 = rwx
+5 = r-x
+5 = r-x
+
+
+22. chmod 600
+----------------------------------------
+Purpose:
+Makes file private.
+
+Example:
+chmod 600 notes.txt
+
+Meaning:
+Owner = Read + Write
+Group = No access
+Others = No access
+
+
+23. chown
+----------------------------------------
+Purpose:
+Changes file owner.
+
+Example:
+sudo chown ubuntu notes.txt
+
+
+24. chgrp
+----------------------------------------
+Purpose:
+Changes group ownership.
+
+Example:
+sudo chgrp ubuntu notes.txt
+
+
+25. tree
+----------------------------------------
+Purpose:
+Displays directory structure.
+
+Example:
+tree Day-03-File-Management
+
+Output:
+
+Day-03-File-Management
+├── backup
+├── docs
+└── logs
+
+
+26. cd
+----------------------------------------
+Purpose:
+Changes directory.
+
+Example:
+cd Day-03-File-Management
+
+Go back:
+cd ..
+
+Go Home:
+cd ~
+
+
+27. Wildcards
+----------------------------------------
+
+All txt files:
+ls *.txt
+
+All log files:
+ls *.log
+
+Files starting with n:
+ls n*
+
+Examples:
+notes.txt
+newfile.txt
+network.txt
